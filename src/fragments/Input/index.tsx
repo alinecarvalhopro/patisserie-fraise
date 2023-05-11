@@ -14,10 +14,10 @@ const Input = forwardRef(
     return (
       <>
         <StyledFieldset>
-          <input type={type} ref={ref} id={id} {...rest} placeholder=" " />
           <label htmlFor={id}>{label}</label>
+          <input type={type} ref={ref} id={id} {...rest} />
+          <p className={"messageError"}>{error}</p>
         </StyledFieldset>
-        <p>{error}</p>
       </>
     );
   }
