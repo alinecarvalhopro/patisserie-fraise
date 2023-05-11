@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../../fragments/Input";
 import { Link } from "react-router-dom";
+import { StyledDiv } from "./style";
 
 export interface ILoginFormData {
   email: string;
@@ -17,9 +18,7 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm <
-  ILoginFormData >
-  ({
+  } = useForm<ILoginFormData>({
     resolver: zodResolver(schemas.loginSchema),
   });
 
@@ -28,27 +27,33 @@ export const LoginForm = () => {
   };
 
   return (
-    <>
-    <form onSubmit={handleSubmit(submit)}>
-      <Input
-        id="email"
-        label="login"
-        error={errors.email?.message}
-        type="email"
-        {...register("email")}
-      />
-      <Input
-        id="password"
-        label="Senha"
-        error={errors.password?.message}
-        type="password"
-        {...register("password")}
-      />
-      <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Entrando" : "Entrar"}
-      </button>
-    </form>
-    <Link to="/register">Cadastrar-se</Link>
-    </>
+    <StyledDiv>
+      <h2>Acesse nosso menu</h2>
+      <div className={"boxForm"}>
+        <form onSubmit={handleSubmit(submit)}>
+          <Input
+            id="email"
+            label="Login"
+            error={errors.email?.message}
+            type="email"
+            placeholder="Digite seu e-mail"
+            {...register("email")}
+          />
+          <Input
+            id="password"
+            label="Senha"
+            error={errors.password?.message}
+            type="password"
+            placeholder="Digite sua senha"
+            {...register("password")}
+          />
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Entrando" : "Entrar"}
+          </button>
+        </form>
+        <p>ou</p>
+        <Link to="/register">Cadastrar-se</Link>
+      </div>
+    </StyledDiv>
   );
 };
