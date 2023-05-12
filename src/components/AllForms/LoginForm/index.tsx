@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../../fragments/Input";
 import { Link } from "react-router-dom";
 import { StyledDiv } from "./style";
+import { useState } from "react";
 
 export interface ILoginFormData {
   email: string;
@@ -14,16 +15,18 @@ export interface ILoginFormData {
 export const LoginForm = () => {
   const { submitLogin } = useUserContext();
 
+  const [loadingLogin, setLoadingLogin] = useState(false);
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<ILoginFormData>({
     resolver: zodResolver(schemas.loginSchema),
   });
 
   const submit: SubmitHandler<ILoginFormData> = (formData) => {
-    submitLogin(formData);
+    submitLogin(formData, setLoadingLogin);
   };
 
   return (
@@ -47,8 +50,8 @@ export const LoginForm = () => {
             placeholder="Digite sua senha"
             {...register("password")}
           />
-          <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Entrando" : "Entrar"}
+          <button type="submit" disabled={loadingLogin}>
+            {loadingLogin ? "Entrando" : "Entrar"}
           </button>
         </form>
         <p>ou</p>

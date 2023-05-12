@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const StyledDiv = styled.div`
 
+background-color: var(--color-backgound-2);
+
 ul {
     display: flex;
 
