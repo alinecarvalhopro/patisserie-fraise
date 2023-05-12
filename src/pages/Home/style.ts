@@ -11,7 +11,6 @@ background-color: var(--color-backgound-2);
     margin: 16px 0 0 16px;
 }
 
-
 @media (min-width: 1000px) {
     .wordCake,
     .wordPie {

@@ -1,16 +1,18 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
-import { toast } from "react-hot-toast/headless";
 import { useNavigate } from "react-router-dom";
-import { ILoginFormData } from "../components/forms/LoginForm";
-import { IRegisterFormData } from "../components/forms/RegisterForm";
+import { ILoginFormData } from "../components/AllForms/LoginForm";
+import { IRegisterFormData } from "../components/AllForms/RegisterForm";
 
 interface IUserProviderProps {
   children: React.ReactNode;
 }
 
 interface IUserContext {
-  submitLogin: (formData: ILoginFormData) => Promise<void>;
+  submitLogin: (
+    formData: ILoginFormData,
+    setLoadingLogin: React.Dispatch<React.SetStateAction<boolean>>
+  ) => Promise<void>;
   submitRegister: (
     formData: IRegisterFormData,
     setLoadingRegister: React.Dispatch<React.SetStateAction<boolean>>
@@ -42,19 +44,23 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   const [user, setUser] = useState<IUser | null>(null);
 
-  const submitLogin = async (formData: ILoginFormData) => {
+  const submitLogin = async (
+    formData: ILoginFormData,
+    setLoadingLogin: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    setLoadingLogin(true);
     try {
       const { data } = await api.post<IUserLoginResponse>("login", formData);
       localStorage.setItem("@PATISSERIEFRAISE:TOKEN", data.accessToken);
       localStorage.setItem("@PATISSERIEFRAISE:USERID", String(data.user.id));
       setUser(data.user);
-      toast.success(`Olá ${data.user.name}!`);
       setTimeout(() => {
         navigate("/home");
       }, 2000);
     } catch (error) {
       console.log(error);
-      toast.error("Email e/ou senha incorretos.");
+    } finally {
+      setLoadingLogin(false);
     }
   };
 
@@ -83,13 +89,11 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       setLoadingRegister(true);
       await api.post<IUserRegisterResponse>("/users", formData);
-      toast.success("Contra criada com sucesso!");
       setTimeout(() => {
         navigate("/");
       }, 2000);
     } catch (error) {
       console.log(error);
-      toast.error("Ops! Algo deu errado.");
     } finally {
       setLoadingRegister(false);
     }

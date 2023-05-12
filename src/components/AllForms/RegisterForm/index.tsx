@@ -15,9 +15,10 @@ export interface IRegisterFormData {
 }
 
 export const RegisterForm = () => {
+  const { submitRegister } = useUserContext();
+  
   const [loadingRegister, setLoadingRegister] = useState(false);
 
-  const { submitRegister } = useUserContext();
 
   const {
     register,
