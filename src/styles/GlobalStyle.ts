@@ -60,8 +60,8 @@ table {
 --color-greyScale-300: #97A7A4;
 --color-greyScale-400: #D9D9D9;
 
---color-backgound-1: #ffffff,
---color-backgound-2: #F9EEEB,
+--color-backgound-1: #ffffff;
+--color-backgound-2: #F9EEEB;
 }
 
 body {
