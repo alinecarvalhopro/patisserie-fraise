@@ -2,19 +2,22 @@ import { useEffect } from "react";
 import { ProductList } from "../../components/ListProducts";
 import { useShowcaseContext } from "../../providers/ShowcaseContext";
 import { Header } from "../../components/Header";
-import { StyledDiv } from "./style";
 
 export const Home = () => {
-  const { loadProducts } = useShowcaseContext();
+  const { loadProducts, loadingProducts } = useShowcaseContext();
 
   useEffect(() => {
     loadProducts();
   }, []);
 
   return (
-    <StyledDiv>
-      <Header />
-      <ProductList />
-    </StyledDiv>
+    <>
+      {loadingProducts ? null : (
+        <>
+          <Header />
+          <ProductList />
+        </>
+      )}
+    </>
   );
 };
