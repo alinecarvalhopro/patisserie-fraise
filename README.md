@@ -14,7 +14,7 @@ Funcionalidades:
 - Cadastro de usuário;
 - Login, autologin e logout;
 - Interação com API para cadastro, login e carregamento dos produtos da vitrine;
-- Respostas ao usuário (Loading nos botões);
+- Respostas ao usuário (Loading nos botões e toasts);
 - Proteção de rotas;
 - Responsividade (Mobile-first);
 
@@ -24,6 +24,7 @@ Bibliotecas utilizadas:
 - React Hook Form;
 - Zod;
 - React Router;
+- React Hot-Toast
 
 Links:
 - Vercel: https://patisseriefraise-alinecarvalhopro.vercel.app/
