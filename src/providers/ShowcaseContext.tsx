@@ -8,6 +8,7 @@ interface IShowcaseProviderProps {
 interface IShowcaseContext {
   productList: IProduct[];
   loadProducts: () => Promise<void>;
+  loadingProducts: boolean;
 }
 
 interface IProduct {
@@ -22,10 +23,12 @@ export const ShowcaseContext = createContext({} as IShowcaseContext);
 
 export const ShowcaseProvider = ({ children }: IShowcaseProviderProps) => {
   const [productList, setProductList] = useState<IProduct[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(false);
 
   const token = localStorage.getItem("@PATISSERIEFRAISE:TOKEN");
 
   const loadProducts = async () => {
+    setLoadingProducts(true);
     try {
       const { data } = await api.get<IProduct[]>("/products", {
         headers: {
@@ -33,7 +36,10 @@ export const ShowcaseProvider = ({ children }: IShowcaseProviderProps) => {
         },
       });
       setProductList(data);
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      setLoadingProducts(false);
+    }
   };
 
   return (
@@ -41,6 +47,7 @@ export const ShowcaseProvider = ({ children }: IShowcaseProviderProps) => {
       value={{
         productList,
         loadProducts,
+        loadingProducts,
       }}
     >
       {children}
