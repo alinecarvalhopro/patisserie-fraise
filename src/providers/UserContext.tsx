@@ -54,9 +54,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@PATISSERIEFRAISE:TOKEN", data.accessToken);
       localStorage.setItem("@PATISSERIEFRAISE:USERID", String(data.user.id));
       setUser(data.user);
-      setTimeout(() => {
         navigate("/home");
-      }, 2000);
     } catch (error) {
       console.log(error);
     } finally {
@@ -89,9 +87,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       setLoadingRegister(true);
       await api.post<IUserRegisterResponse>("/users", formData);
-      setTimeout(() => {
         navigate("/");
-      }, 2000);
     } catch (error) {
       console.log(error);
     } finally {

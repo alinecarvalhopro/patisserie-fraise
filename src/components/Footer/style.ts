@@ -1,52 +1,34 @@
 import styled from "styled-components";
 
-export const StyledHeader = styled.header`
+export const StyledFooter = styled.footer`
 width: 100%;
-height: 100px;
-
-margin-bottom: 20px;
 
 background-color: white;
-
-position: fixed;
-left: 0;
-top: 0;
 
 display: flex;
 justify-content: space-between;
 align-items: center;
 
 img {
-    width: 164px;
+    width: 100px;
 
-    margin-left: 16px;
+    margin: 16px;
 }
 
-div {
-    display: flex;
-    align-items: center;
-}
+a {
+    width: 60px;
+    height: 20px;
 
-.bag {
-    width: 50px;
-
-    margin: 10px;
-}
-
-button {
-    width: 45px;
-    height: 30px;
-
-    margin-right: 16px;
+    margin: 16px;
     
     border: none;
 
-    background-color: var(--color-greyScale-300);
+    background-color: #F79571;
     border-radius: 5px;
 
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 22px;
     text-decoration: none;
     color: white;
@@ -58,22 +40,18 @@ button {
     transition: 0.8s
 }
 
-button:hover {
-    background-color: var(--color-greyScale-200);
-}
-
 @media (min-width: 1000px) {
     img {
+        width: 150px;
+
         margin-left: 100px;
     }
 
-    .bag {
+    a {
         width: 80px;
-    }
-
-    button {
-        width: 50px;
         height: 30px;
+
+        font-size: 14px;
 
         margin-right: 100px;
     }
