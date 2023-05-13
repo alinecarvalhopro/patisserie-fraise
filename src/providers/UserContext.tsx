@@ -3,6 +3,7 @@ import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { ILoginFormData } from "../components/AllForms/LoginForm";
 import { IRegisterFormData } from "../components/AllForms/RegisterForm";
+import toast from "react-hot-toast";
 
 interface IUserProviderProps {
   children: React.ReactNode;
@@ -54,9 +55,27 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@PATISSERIEFRAISE:TOKEN", data.accessToken);
       localStorage.setItem("@PATISSERIEFRAISE:USERID", String(data.user.id));
       setUser(data.user);
+      toast(`Olá, ${data.user.name}!`, {
+        style: {
+          borderRadius: "10px",
+          padding: "16px",
+          background: "#EEC8BB",
+          color: "#1E1E1E",
+        },
+      });
+      setTimeout(() => {
         navigate("/home");
+      }, 2000);
     } catch (error) {
       console.log(error);
+      toast(`E-mail e/ou senha incorretos.`, {
+        style: {
+          borderRadius: "10px",
+          padding: "16px",
+          background: "#B61739",
+          color: "#fff",
+        },
+      });
     } finally {
       setLoadingLogin(false);
     }
@@ -87,9 +106,27 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       setLoadingRegister(true);
       await api.post<IUserRegisterResponse>("/users", formData);
+      setTimeout(() => {
         navigate("/");
+      }, 2000);
+      toast("Conta criada com sucesso!", {
+        style: {
+          borderRadius: "10px",
+          padding: "16px",
+          background: "#EEC8BB",
+          color: "#1E1E1E",
+        },
+      });
     } catch (error) {
       console.log(error);
+      toast("Algo deu errado.", {
+        style: {
+          borderRadius: "10px",
+          padding: "16px",
+          background: "#B61739",
+          color: "#fff",
+        },
+      });
     } finally {
       setLoadingRegister(false);
     }
