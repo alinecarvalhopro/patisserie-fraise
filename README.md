@@ -4,7 +4,7 @@ Em desenvolvimento -> Branch Develop
 
 Projeto: Pâtisserie Fraise
 
-Proposta: E-commerce. (Home em desenvolvimento)
+Proposta: E-commerce. (Home em desenvolvimento - Carrinho de compras em construção)
 
 Tecnologias:
 - React
