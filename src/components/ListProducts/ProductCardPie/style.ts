@@ -4,6 +4,10 @@ export const StyledLi = styled.li`
 
 margin: 16px;
 
+border-radius: 5px;
+
+transition: 0.8s;
+
 img {
     width: 250px;
     height: 250px;
@@ -11,6 +15,10 @@ img {
     object-fit: cover;
 
     border-radius: 5px;
+}
+
+img:hover {
+    
 }
 
 .content {
@@ -38,6 +46,12 @@ h3 {
     color: var(--color-primary);
 }
 
+.priceButtonBox {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end
+}
+
 p {
     width: 250px;
 
@@ -49,4 +63,34 @@ p {
     line-height: 22px;
     color: var(--color-greyScale-200);
 }
+
+.buttonAddBag {
+    width: 180px;
+    height: 28px;
+
+    padding: 0 5px;
+    
+    border: none;
+
+    background-color: var(--color-greyScale-200);
+    border-radius: 5px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 22px;
+    text-decoration: none;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.8s
+}
+
+.buttonAddBag:hover {
+    background-color: var(--color-primary);
+}
+
 `

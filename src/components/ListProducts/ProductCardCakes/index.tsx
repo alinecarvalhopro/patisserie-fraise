@@ -1,12 +1,12 @@
+import { useCartContext } from "../../../providers/CartContext";
 import { useShowcaseContext } from "../../../providers/ShowcaseContext";
 import { StyledLi } from "./style";
 
 export const ProductCardCake = () => {
   const { productList } = useShowcaseContext();
+  const { addToCart } = useCartContext();
 
-  const cakes = productList.filter(cake => 
-    cake.kind === "cake"
-  )
+  const cakes = productList.filter((cake) => cake.kind === "cake");
 
   return (
     <>
@@ -15,14 +15,17 @@ export const ProductCardCake = () => {
           <img src={cake.image} alt={cake.name} />
           <div className="content">
             <h3>{cake.name}</h3>
-            <p>
-              {cake.price.toLocaleString("pt-br", {
-                style: "currency",
-                currency: "BRL",
-              })}
-            </p>
+            <div className="priceButtonBox">
+              <p>
+                {cake.price.toLocaleString("pt-br", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
+              </p>
+              <button onClick={() => addToCart(cake.id)} className="buttonAddBag">Colocar na bag</button>
+            </div>
           </div>
-          </StyledLi>
+        </StyledLi>
       ))}
     </>
   );

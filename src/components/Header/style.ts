@@ -8,6 +8,8 @@ margin-bottom: 20px;
 
 background-color: white;
 
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
 position: fixed;
 left: 0;
 top: 0;
@@ -33,7 +35,11 @@ div {
     margin: 10px;
 }
 
-button {
+.buttonBag {
+    padding: 0;
+}
+
+.buttonLeave {
     width: 45px;
     height: 30px;
 
@@ -58,7 +64,7 @@ button {
     transition: 0.8s
 }
 
-button:hover {
+.buttonLeave:hover {
     background-color: var(--color-greyScale-200);
 }
 
@@ -71,7 +77,7 @@ button:hover {
         width: 80px;
     }
 
-    button {
+    .buttonLeave {
         width: 50px;
         height: 30px;
 

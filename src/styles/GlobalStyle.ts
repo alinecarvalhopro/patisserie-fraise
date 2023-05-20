@@ -54,6 +54,7 @@ table {
 :root {
 --color-primary: #B61739;
 --color-secundary: #EEC8BB;
+--color-details: #F79571;
 
 --color-greyScale-100: #1E1E1E;
 --color-greyScale-200: #496460;
@@ -80,9 +81,17 @@ input:disabled, button:disabled {
 cursor: not-allowed
 }
 
+.productName {
+	width: 100px;
 
-@media(min-width: 769px) {
+	font-size: 12px;
+}
 
+@media(min-width: 1000px) {
+.productName {
+	width: 350px;
+	font-size: 16px;
+}
 }
 
 `
