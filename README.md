@@ -1,10 +1,6 @@
-# patisserie-fraise
+# patisserie-fraise 🍰🍓
 
-Em desenvolvimento -> Branch Develop
-
-Projeto: Pâtisserie Fraise
-
-Proposta: E-commerce.
+Projeto pessoal de um E-commerce.
 
 Tecnologias:
 - React
